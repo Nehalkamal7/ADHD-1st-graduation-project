@@ -1,0 +1,26 @@
+services:
+  frontend:
+    container_name: userui
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "2002:80"
+    environment:
+      - NODE_ENV=production
+    restart: always
+    networks:
+      app-network:
+        ipv4_address: 72.28.0.20
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 256M
+
+networks:
+  app-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: "72.28.0.0/24"

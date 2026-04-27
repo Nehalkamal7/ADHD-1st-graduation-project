@@ -1,0 +1,23 @@
+services:
+  backend:
+    build: .
+    ports:
+      - "1234:8000"
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+      - TF_CPP_MIN_LOG_LEVEL=2
+      - TF_ENABLE_ONEDNN_OPTS=0
+      - PYTHONPATH=/app
+    restart: always
+    networks:
+      app-network:
+        ipv4_address: 72.29.0.30
+
+networks:
+  app-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: "72.29.0.0/24"

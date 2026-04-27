@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&family=Aref+Ruqaa+Ink:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  height: -webkit-fill-available;
+}
+
+body {
+  font-family: 'Noto Sans Arabic', sans-serif;
+  direction: rtl;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  -webkit-tap-highlight-color: transparent;
+}
+
+input, button {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 8px;
+}
+
+.arabic-quote {
+  font-family: 'Aref Ruqaa Ink', serif;
+  letter-spacing: 0.5px;
+}
+
+@keyframes moveAcross {
+  0% {
+    transform: translateX(-100%) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateX(calc(50vw - 50%)) rotate(180deg) scale(1.5);
+  }
+  100% {
+    transform: translateX(calc(100vw + 100%)) rotate(360deg) scale(1);
+  }
+}
+
+@keyframes moveZigZag {
+  0% {
+    transform: translateX(-100%) translateY(0);
+  }
+  25% {
+    transform: translateX(calc(25vw - 25%)) translateY(50px);
+  }
+  50% {
+    transform: translateX(calc(50vw - 50%)) translateY(-50px);
+  }
+  75% {
+    transform: translateX(calc(75vw - 75%)) translateY(50px);
+  }
+  100% {
+    transform: translateX(calc(100vw + 100%)) translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateX(-100%) translateY(0);
+  }
+  50% {
+    transform: translateX(calc(50vw - 50%)) translateY(-100px);
+  }
+  100% {
+    transform: translateX(calc(100vw + 100%)) translateY(0);
+  }
+}
+
+.animate-distraction {
+  animation: moveAcross 3s linear forwards;
+}
+
+.animate-zigzag {
+  animation: moveZigZag 4s linear forwards;
+}
+
+.animate-bounce {
+  animation: bounce 5s cubic-bezier(0.36, 0, 0.66, -0.56) forwards;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-bottom: 28px solid currentColor;
+}
+
+.star {
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
